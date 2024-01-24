@@ -1,0 +1,9 @@
+{
+  "workspaces": [
+    "packages/*"
+  ],
+  "installConfig": {
+    "hoistingLimits": "dependencies"
+  },
+  "packageManager": "yarn@4.0.1"
+}

@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "@babel/plugin-transform-export-namespace-from",
+    [
+      "transform-inline-environment-variables",
+      {
+        "include": ["NODE_ENV"]
+      }
+    ]
+  ],
+  "presets": [
+    "@babel/preset-typescript",
+    "@rnx-kit/babel-preset-metro-react-native"
+  ]
+}
