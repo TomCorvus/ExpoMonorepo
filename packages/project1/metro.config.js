@@ -1,47 +1,26 @@
-const { getDefaultConfig } = require("@react-native/metro-config");
-const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks");
-const { makeMetroConfig } = require("@rnx-kit/metro-config");
-const { TypeScriptPlugin } = require("@rnx-kit/metro-plugin-typescript");
-
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * @type {import('metro-config').MetroConfig}
- */
-
+// Learn more https://docs.expo.dev/guides/monorepos
+const { getDefaultConfig } = require("expo/metro-config");
+const { FileStore } = require("metro-cache");
 const path = require("path");
 
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, "../..");
 
-const defaultConfig = getDefaultConfig(__dirname);
+const config = getDefaultConfig(projectRoot);
 
-module.exports = makeMetroConfig({
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
-  },
-  resolver: {
-    assetExts: [...defaultConfig.resolver.assetExts, "lottie"],
-    disableHierarchicalLookup: true,
-    nodeModulesPaths: [
-      path.resolve(projectRoot, "node_modules"),
-      path.resolve(workspaceRoot, "node_modules"),
-    ],
-    resolverMainFields: ["sbmodern", "react-native", "browser", "main"],
-    resolveRequest: MetroSymlinksResolver({
-      remapModule: (_context, moduleName) => {
-        return moduleName;
-      },
-    }),
-  },
-  serializer: {
-    experimentalSerializerHook: TypeScriptPlugin(),
-  },
-  watchFolders: [workspaceRoot],
-});
+config.projectRoot = projectRoot;
+config.watchFolders = [workspaceRoot];
+
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, "node_modules"),
+  path.resolve(workspaceRoot, "node_modules"),
+];
+
+// Use turborepo to restore the cache when possible
+config.cacheStores = [
+  new FileStore({
+    root: path.join(projectRoot, "node_modules", ".cache", "metro"),
+  }),
+];
+
+module.exports = config;

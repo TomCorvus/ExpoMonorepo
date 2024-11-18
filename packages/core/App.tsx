@@ -7,26 +7,8 @@ import * as SplashScreen from "expo-splash-screen";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [fontsLoaded, fontError] = useFonts({
-    "circular-book": require("../core/src/assets/fonts/circular-book.ttf"),
-    "circular-medium": require("../core/src/assets/fonts/circular-medium.ttf"),
-  });
-
-  console.log(fontsLoaded);
-  console.log(fontError);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
+    <View style={styles.container}>
       <Text style={styles.text}>
         Open up App.js to start working on your app!
       </Text>
