@@ -3318,6 +3318,9 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/runtime": "npm:^7.26.0"
+    "@react-native-community/cli": "npm:15.1.2"
+    "@react-native-community/cli-platform-android": "npm:15.1.2"
+    "@react-native-community/cli-platform-ios": "npm:15.1.2"
     "@react-native/babel-preset": "npm:^0.76.2"
     "@react-native/eslint-config": "npm:^0.76.2"
     "@react-native/metro-config": "npm:^0.76.2"
@@ -3346,9 +3349,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@monorepo/project1@workspace:packages/project1":
+"@monorepo/project1@workspace:apps/project1":
   version: 0.0.0-use.local
-  resolution: "@monorepo/project1@workspace:packages/project1"
+  resolution: "@monorepo/project1@workspace:apps/project1"
   dependencies:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
@@ -3613,7 +3616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/cli@npm:15.1.2":
+"@react-native-community/cli@npm:15.1.2, @react-native-community/cli@npm:latest":
   version: 15.1.2
   resolution: "@react-native-community/cli@npm:15.1.2"
   dependencies:
@@ -6807,7 +6810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-status-bar@npm:^2.0.0":
+"expo-status-bar@npm:^2.0.0, expo-status-bar@npm:~2.0.0":
   version: 2.0.0
   resolution: "expo-status-bar@npm:2.0.0"
   peerDependencies:
@@ -10632,6 +10635,20 @@ __metadata:
   checksum: 1697e07cb1068055dbe9fe858d242368ff5d2073639e652b75a7eb1f2a1a8d4afd404d719de23c7b48481a6aa0040686310e2dac2f53d776daa2176d3f96369c
   languageName: node
   linkType: hard
+
+"project2@workspace:apps/project2":
+  version: 0.0.0-use.local
+  resolution: "project2@workspace:apps/project2"
+  dependencies:
+    "@babel/core": "npm:^7.20.0"
+    "@monorepo/core": "workspace:^"
+    "@react-native-community/cli": "npm:latest"
+    expo: "npm:~52.0.7"
+    expo-status-bar: "npm:~2.0.0"
+    react: "npm:18.3.1"
+    react-native: "npm:0.76.2"
+  languageName: unknown
+  linkType: soft
 
 "promise-retry@npm:^2.0.1":
   version: 2.0.1

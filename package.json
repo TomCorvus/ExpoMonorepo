@@ -1,7 +1,14 @@
 {
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**"
+    ]
+  },
   "installConfig": {
     "hoistingLimits": "dependencies"
   },
